@@ -1,0 +1,404 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --background: 0 0% 100%;
+        --foreground: 0 0% 3.9%;
+        --primary: #667eea;
+        --primary-dark: #764ba2;
+        --primary-light: #a8b5ff;
+        --accent: #c9a8e8;
+
+        /* Code snippet colors */
+        --code-purple: #8b7bb8;
+        --code-blue: #667eea;
+        --code-violet: #764ba2;
+    }
+
+    .dark {
+        --background: 0 0% 7%;
+        --foreground: 0 0% 98%;
+        --dark-bg-primary: #0f0f1a;
+        --dark-bg-secondary: #16162a;
+        --dark-bg-tertiary: #1c1c2e;
+        --dark-border: #2a2a44;
+        --dark-text-primary: #e8e8f0;
+        --dark-text-secondary: #b4b4c8;
+
+        /* Code snippet colors */
+        --code-purple-dark: #b8a8d8;
+        --code-blue-dark: #a8b5ff;
+        --code-violet-dark: #c9a8e8;
+    }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    background-color: #ffffff;
+    transition: background-color 0.3s ease;
+}
+
+html.dark {
+    background-color: #0f0f1a;
+}
+
+body {
+    @apply bg-white dark:bg-[#0f0f1a] text-neutral-900 dark:text-[#e8e8f0] antialiased;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Gradient background */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+            radial-gradient(ellipse 80% 50% at 50% -20%, rgba(120, 119, 198, 0.15), transparent),
+            radial-gradient(ellipse 60% 50% at 0% 100%, rgba(204, 171, 238, 0.1), transparent);
+    pointer-events: none;
+    z-index: 0;
+    transition: opacity 0.3s ease;
+}
+
+.dark body::before {
+    background:
+            radial-gradient(ellipse 80% 50% at 50% -20%, rgba(120, 119, 198, 0.08), transparent),
+            radial-gradient(ellipse 60% 50% at 0% 100%, rgba(204, 171, 238, 0.05), transparent);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    @apply bg-transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    @apply bg-neutral-300 dark:bg-neutral-700 rounded-full;
+    transition: background-color 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    @apply bg-neutral-400 dark:bg-neutral-600;
+}
+
+/* Animations */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+@keyframes gradient-shift {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+@keyframes pulse-glow {
+    0%, 100% {
+        box-shadow: 0 0 20px rgba(102, 126, 234, 0.3);
+    }
+    50% {
+        box-shadow: 0 0 30px rgba(118, 75, 162, 0.5);
+    }
+}
+
+.animate-float {
+    animation: float 3s ease-in-out infinite;
+}
+
+.animate-shimmer {
+    background: linear-gradient(
+            90deg,
+            transparent 0%,
+            rgba(255, 255, 255, 0.1) 50%,
+            transparent 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
+}
+
+/* Gradient Text */
+.gradient-text {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.dark .gradient-text {
+    background: linear-gradient(135deg, #a8b5ff 0%, #c9a8e8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Gradient Button */
+.gradient-button {
+    @apply relative overflow-hidden;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    transition: all 0.3s ease;
+}
+
+.gradient-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+    transition: left 0.3s ease;
+}
+
+.gradient-button:hover::before {
+    left: 0;
+}
+
+.gradient-button > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* Icon Button Hover */
+.icon-button {
+    @apply w-10 h-10 rounded-xl bg-white dark:bg-[#1c1c2e] border border-neutral-200 dark:border-[#2a2a44] flex items-center justify-center text-neutral-600 dark:text-[#b4b4c8] transition-all duration-300 shadow-sm;
+}
+
+.icon-button:hover {
+    @apply border-[#667eea] dark:border-[#a8b5ff]/40;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.08) 0%, rgba(118, 75, 162, 0.08) 100%);
+    color: #667eea;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
+}
+
+.dark .icon-button:hover {
+    background: linear-gradient(135deg, rgba(168, 181, 255, 0.15) 0%, rgba(201, 168, 232, 0.15) 100%);
+    color: #a8b5ff;
+    box-shadow: 0 4px 12px rgba(168, 181, 255, 0.12);
+}
+
+/* Logo pulse animation */
+@keyframes logo-pulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.05);
+        opacity: 0.8;
+    }
+}
+
+/* Glass effect */
+.glass {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: background 0.3s ease, border 0.3s ease;
+}
+
+.dark .glass {
+    background: rgba(28, 28, 46, 0.7);
+    border: 1px solid rgba(168, 181, 255, 0.1);
+}
+
+/* Card Hover */
+.card-hover {
+    @apply transition-all duration-300;
+}
+
+.card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(102, 126, 234, 0.15);
+}
+
+.dark .card-hover:hover {
+    box-shadow: 0 20px 40px rgba(168, 181, 255, 0.08);
+}
+
+/* Link Hover Effect */
+.link-hover {
+    @apply relative;
+}
+
+.link-hover::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    transition: width 0.3s ease;
+}
+
+.link-hover:hover::after {
+    width: 100%;
+}
+
+/* Badge */
+.badge {
+    @apply inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+    color: #667eea;
+    border: 1px solid rgba(102, 126, 234, 0.2);
+    transition: all 0.3s ease;
+}
+
+.dark .badge {
+    background: linear-gradient(135deg, rgba(168, 181, 255, 0.15) 0%, rgba(201, 168, 232, 0.15) 100%);
+    color: #a8b5ff;
+    border: 1px solid rgba(168, 181, 255, 0.2);
+}
+
+/* Selection */
+::selection {
+    background-color: rgba(120, 119, 198, 0.3);
+    color: inherit;
+}
+
+.dark ::selection {
+    background-color: rgba(168, 181, 255, 0.25);
+    color: inherit;
+}
+
+/* Focus visible */
+*:focus-visible {
+    outline: 2px solid #667eea;
+    outline-offset: 2px;
+}
+
+.dark *:focus-visible {
+    outline: 2px solid #a8b5ff;
+    outline-offset: 2px;
+}
+
+/* Smooth transitions for theme switching */
+* {
+    transition-property: background-color, border-color, color, fill, stroke;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 0.3s;
+}
+
+/* Exclude these from transition */
+.no-transition,
+.no-transition * {
+    transition: none !important;
+}
+
+/* Logo Orb (Clean) */
+.logo-orb {
+    position: relative;
+    width: 36px;
+    height: 36px;
+    border-radius: 9999px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    box-shadow:
+            inset 0 -3px 6px rgba(0,0,0,0.2),
+            inset 0 2px 4px rgba(255,255,255,0.35),
+            0 6px 14px rgba(102,126,234,0.35);
+    transition: transform 0.25s ease;
+}
+
+.dark .logo-orb {
+    background: linear-gradient(135deg, #a8b5ff 0%, #c9a8e8 100%);
+    box-shadow:
+            inset 0 -3px 6px rgba(0,0,0,0.35),
+            inset 0 2px 4px rgba(255,255,255,0.2),
+            0 6px 14px rgba(168,181,255,0.25);
+}
+
+/* Eyes */
+.logo-eye {
+    position: absolute;
+    top: 12px;
+    width: 4px;
+    height: 4px;
+    background: #fff;
+    border-radius: 9999px;
+}
+
+.logo-eye.left {
+    left: 11px;
+}
+
+.logo-eye.right {
+    right: 11px;
+}
+
+/* Smile */
+.logo-smile {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 12px;
+    height: 6px;
+    border-bottom: 2px solid #fff;
+    border-radius: 0 0 9999px 9999px;
+}
+
+/* Hover */
+.group:hover .logo-orb {
+    transform: scale(1.06);
+}
+
+/* Dark Mode Specific Improvements */
+.dark {
+    color-scheme: dark;
+}
+
+/* Improve readability in dark mode */
+.dark h1,
+.dark h2,
+.dark h3,
+.dark h4,
+.dark h5,
+.dark h6 {
+    color: #e8e8f0;
+}
+
+.dark p {
+    color: #d4d4e0;
+}
+
+.dark a {
+    color: #a8b5ff;
+}
+
+.dark a:hover {
+    color: #c9a8e8;
+}
