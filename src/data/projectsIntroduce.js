@@ -157,7 +157,7 @@ export const projects = [
     }
   },
 
-  // =========================================================
+    // =========================================================
   // 송성준 Final Project
   // SAYREN
   // =========================================================
@@ -169,92 +169,150 @@ export const projects = [
     type: "Spring Boot & Next.js",
 
     desc:
-      "렌탈·구독 비즈니스 모델을 기반으로 상품 선택부터 주문·배송까지의 흐름을 구현한 커머스 플랫폼",
+      "일반 구매와 렌탈·구독 상품을 함께 제공하며 상품 선택부터 장바구니, 주문, 배송까지 이어지는 커머스 플랫폼",
 
     role:
-      "장바구니·주문·요금제·배송·배송지 도메인 백엔드 개발 및 프론트엔드 API 연동",
+      "요금제(OrderPlan), 장바구니(Cart), 주문(Order), 배송지(Address), 배송·회수(Delivery), 알림(Notification) 담당 - 백엔드 도메인·REST API 구현 및 Next.js 프론트엔드 연동",
 
     category: "React/Next.js",
 
-    image: "/images/projects/sayren.jpg",
+    // =========================================================
+    // SAYREN 대표 이미지
+    // 서비스 전체의 일반 구매 + 렌탈 구독 구조
+    // =========================================================
+    image: "/images/projects/sayren/sayren-main.jpg",
+
+    // =========================================================
+    // SAYREN 상세 이미지
+    // 사용자 기능 흐름 순서
+    // OrderPlan → Cart → Checkout → Address → Order → Delivery
+    // =========================================================
+
+    // 렌탈 12 / 24 / 36개월 요금제 선택
+    imageDetail: "/images/projects/sayren/sayren-plan.png",
+
+    // 일반 구매 + 렌탈 상품 통합 장바구니
+    imageDetail2: "/images/projects/sayren/sayren-cart.png",
+
+    // 상품·요금제·결제요약·배송지를 연결하는 Checkout
+    imageDetail3: "/images/projects/sayren/sayren-checkout.png",
+
+    // 기존 배송지 조회 및 기본 배송지 선택
+    imageDetail4: "/images/projects/sayren/sayren-address-list.png",
+
+    // 신규 배송지 등록
+    imageDetail5: "/images/projects/sayren/sayren-address-create.png",
+
+    // 주문 생성 완료
+    imageDetail6: "/images/projects/sayren/sayren-order-success.png",
+
+    // 관리자 배송·회수 목록 및 상태 변경
+    imageDetail7: "/images/projects/sayren/sayren-delivery-admin.png",
 
     detailedInfo: {
       overview:
-        "렌탈과 일반 구매 방식을 제공하는 커머스 플랫폼입니다. 팀 프로젝트에서 장바구니, 주문, 요금제, 배송, 배송지 영역을 담당하여 사용자가 상품을 장바구니에 담은 뒤 주문을 생성하고 배송까지 이어지는 핵심 흐름을 구현했습니다.",
+        "SAYREN은 일반 구매와 렌탈·구독 방식을 함께 제공하는 커머스 플랫폼입니다. 팀 프로젝트에서 요금제, 장바구니, 주문·주문상품·주문이력, 배송지, 배송·회수, 알림 영역을 담당했습니다. 사용자가 상품별 구매 또는 렌탈 요금제를 선택한 뒤 장바구니 또는 바로구매를 통해 배송지를 지정하고 주문을 생성하는 흐름을 구현했으며, 팀원이 담당한 결제 도메인의 결제 완료 상태를 배송 생성과 연결하고 배송 상태 변경을 알림 흐름까지 연동했습니다.",
 
       keyPoints: [
-        "회원별 장바구니 상품 등록·조회·삭제 기능 구현",
+        "구매(PURCHASE)와 렌탈(RENTAL) 유형을 OrderPlan으로 분리하고 렌탈 상품의 12·24·36개월 요금제를 상품 선택부터 장바구니와 주문까지 유지",
 
-        "장바구니 데이터를 기반으로 주문을 생성하는 주문 처리 흐름 구현",
+        "회원·상품·요금제 조합을 기준으로 장바구니 데이터를 관리하고 상품 등록·조회·삭제·전체 비우기 기능 구현",
 
-        "구매(PURCHASE)와 렌탈(RENTAL) 요금제를 주문 데이터와 연결하여 관리",
+        "일반 구매 상품과 렌탈 상품이 함께 존재하는 장바구니에서 구매금액, 월 렌탈금액, 보증금을 구분하여 주문 예상 금액을 구성",
 
-        "주문 상태와 주문 이력을 관리하는 기능 구현",
+        "장바구니 주문과 바로구매 흐름을 분리하고 상품·요금제·배송지 정보를 기반으로 Order와 OrderItem을 생성",
 
-        "배송 및 반품 과정의 상태 흐름 관리",
+        "주문 시점의 상품 가격을 productPriceSnapshot으로 OrderItem에 저장하여 이후 상품 가격이 변경되어도 기존 주문 가격이 유지되도록 구성",
 
-        "회원별 배송지 등록·조회·수정·삭제 및 기본 배송지 설정 기능 구현",
+        "주문 상태와 상태 변경 이력을 OrderHistory로 분리하여 주문의 상태 변화 기록을 관리",
 
-        "Spring Boot REST API와 Next.js 프론트엔드 연동",
+        "회원별 배송지 등록·조회·수정·삭제 및 기본 배송지 설정 기능을 구현하고 Checkout에서 기존 배송지 선택 또는 신규 배송지 등록이 가능하도록 연동",
 
-        "TanStack Query를 활용한 서버 데이터 조회 및 변경 후 캐시 갱신 처리"
+        "팀원이 담당한 결제 도메인의 PAID 상태 변경 이벤트를 수신하여 주문상품 기준으로 Delivery와 DeliveryItem을 생성하고 초기 배송 상태를 READY로 설정",
+
+        "배송 상태를 READY → SHIPPING → DELIVERED 순서로 관리하고 회수 상태를 RETURN_READY → IN_RETURNING → RETURNED 흐름으로 분리",
+
+        "배송 상태 변경 시 이벤트를 발행하여 다른 도메인과 직접 결합하지 않고 후속 처리와 알림 기능이 연결될 수 있도록 구성",
+
+        "결제·배송·구독 관련 상태 변경 이벤트를 Notification 영역과 연결하여 사용자 알림을 생성하는 이벤트 기반 흐름 구현",
+
+        "Next.js와 TanStack Query를 이용해 장바구니·Checkout·주문·배송지 관련 REST API를 연결하고 Mutation 성공 후 관련 Query 캐시를 갱신"
       ],
 
       technologies: {
         "Java 21":
-          "장바구니, 주문, 배송 등 주요 비즈니스 로직 구현",
+          "OrderPlan, Cart, Order, Address, Delivery, Notification 도메인의 비즈니스 로직과 상태 처리 구현",
 
         "Spring Boot":
-          "도메인별 Controller, Service 및 REST API 구현",
+          "Controller → Service → Repository/Mapper 계층을 기반으로 장바구니·주문·배송지·배송 REST API 구현",
 
-        "Spring Security":
-          "JWT 기반 인증 환경에서 회원별 API 접근 처리",
+        "Spring Data JPA":
+          "CartItem, Order, OrderItem, OrderHistory, Address, Delivery, DeliveryItem 등 담당 엔티티의 관계 설정과 데이터 영속성 처리",
 
-        JPA:
-          "주문, 주문상품, 장바구니, 배송, 배송지 엔티티의 데이터 처리",
+        MapStruct:
+          "Entity와 DTO 간 변환 로직을 Mapper로 분리하여 Controller·Service 계층의 변환 책임을 축소",
 
-        QueryDSL:
-          "조건에 따른 주문 및 데이터 조회 기능 구현",
+        "Spring Security / JWT":
+          "JWT 인증 환경에서 로그인 회원을 기준으로 장바구니·주문·배송지 등 회원별 API를 처리하고 인증 요청 흐름과 연동",
+
+        "Spring Event":
+          "결제 완료, 배송 상태 변경 등 도메인 이벤트를 이용하여 Payment → Delivery → Notification으로 이어지는 후속 처리를 연결",
 
         MariaDB:
-          "주문·장바구니·배송·배송지 등의 관계형 데이터 저장 및 관리",
+          "주문·주문상품·주문이력·장바구니·배송지·배송 및 알림 관련 관계형 데이터 저장",
 
         Redis:
-          "인증 및 캐싱이 필요한 서비스 구조에서 활용",
+          "프로젝트 공통 JWT Refresh Token 및 인증 인프라와 담당 기능의 인증 요청 흐름을 연동",
 
         "Next.js 14":
-          "장바구니 및 주문 관련 화면과 백엔드 API 연동",
+          "장바구니, Checkout, 배송지 선택·등록, 주문 관련 사용자 화면과 관리자 배송 화면 구성",
 
-        "Redux Toolkit":
-          "프론트엔드 전역 상태 관리",
+        React:
+          "상품 요금제 선택, 장바구니 조작, 배송지 모달과 주문 처리 등 사용자 인터랙션 구현",
 
         "TanStack Query":
-          "서버 상태 조회와 Mutation 이후 관련 데이터 캐시 갱신"
+          "장바구니·주문·배송지 서버 상태 조회와 Mutation 처리 및 성공 후 Query 캐시 무효화",
+
+        Axios:
+          "공용 API 클라이언트와 프록시 구조를 통해 Spring Boot REST API 요청 처리",
+
+        "Redux Toolkit":
+          "프로젝트 공통 전역 상태 및 Modal 등 공용 UI 상태 관리",
+
+        "Tailwind CSS":
+          "장바구니·Checkout·배송지·관리자 배송 관련 화면의 UI 구성"
       },
 
       challenges: [
-        "장바구니의 상품 및 요금제 정보를 주문 데이터로 안정적으로 전달할 수 있도록 장바구니 → 주문 생성 흐름을 구성",
+        "일반 구매와 렌탈 상품이 동일한 주문 흐름을 사용하면서도 금액 구조가 달라 구매금액·월 렌탈금액·보증금을 각각 구분하고 선택한 OrderPlan이 Cart와 Order까지 유지되도록 데이터 흐름을 구성",
 
-        "주문 상태와 배송·반품 상태가 서로 섞이지 않도록 각각의 상태와 책임을 구분하여 관리",
+        "상품 가격이 변경될 경우 과거 주문 금액까지 영향을 받는 문제를 방지하기 위해 주문 생성 시점의 가격을 OrderItem의 productPriceSnapshot으로 별도 저장",
 
-        "인증이 필요한 API 요청 과정에서 발생한 401·403 문제를 확인하고 Refresh Token 재발급 흐름과 프론트엔드 요청 구조를 점검",
+        "주문·결제·배송·구독이 서로 다른 팀원의 도메인으로 나뉘어 있어 직접 Service를 강하게 결합하지 않고 상태 변경 이벤트를 기준으로 후속 로직이 실행되도록 연동",
 
-        "주문 성공 후 잘못된 orderId 전달로 주문 상세 페이지가 undefined 경로로 이동하던 문제를 응답 데이터의 orderId를 사용하도록 수정",
+        "결제 성공 이후 배송이 중복 생성되지 않도록 주문상품 기준으로 기존 Delivery 존재 여부를 확인한 뒤 READY 상태의 배송 데이터를 생성",
 
-        "장바구니 및 주문 처리 후 기존 화면에 이전 데이터가 남는 문제를 TanStack Query 캐시 무효화 방식으로 처리"
+        "배송과 회수의 상태값이 섞이지 않도록 배송은 READY → SHIPPING → DELIVERED, 회수는 RETURN_READY → IN_RETURNING → RETURNED 흐름으로 분리하여 상태 전환을 관리",
+
+        "인증이 필요한 장바구니·주문 API에서 발생한 401·403 응답을 확인하면서 Access Token과 Refresh Token 재발급 및 Next.js 프록시 요청 흐름을 점검",
+
+        "주문 생성 성공 후 잘못된 값이 전달되어 주문 상세 경로가 undefined가 되는 문제를 확인하고 API 응답의 실제 orderId를 사용하도록 프론트엔드 이동 로직 수정",
+
+        "장바구니 삭제·주문 생성 등 Mutation 이후 화면에 이전 데이터가 남는 문제를 TanStack Query의 Query 무효화 방식으로 처리"
       ],
 
       outcome:
-        "장바구니에서 주문 생성, 요금제 적용, 배송지 선택 및 배송 상태 관리까지 이어지는 커머스의 핵심 흐름을 직접 구현하면서 Spring Boot 기반 도메인 설계와 프론트엔드 API 연동 경험을 쌓았습니다."
+        "상품별 구매·렌탈 요금제 선택 → 장바구니 또는 바로구매 → 배송지 선택 → 주문 생성 → 결제 완료 이벤트 → 배송 생성 및 상태 변경 → 사용자 알림으로 이어지는 커머스 핵심 흐름을 구현했습니다. 이를 통해 Spring Boot와 JPA 기반 도메인 설계, 주문 시점 데이터 Snapshot 관리, 이벤트 기반 도메인 연동, Next.js·TanStack Query를 이용한 서버 상태 관리와 팀 프로젝트의 도메인 간 협업 방식을 경험했습니다."
     },
 
     stack: {
       backend: [
         "Java 21",
         "Spring Boot",
+        "Spring Data JPA",
         "Spring Security",
-        "JPA",
-        "QueryDSL",
+        "MapStruct",
+        "Spring Event",
         "MariaDB",
         "Redis"
       ],
@@ -262,9 +320,11 @@ export const projects = [
       frontend: [
         "Next.js 14",
         "React",
+        "JavaScript",
         "Tailwind CSS",
         "Redux Toolkit",
-        "TanStack Query"
+        "TanStack Query",
+        "Axios"
       ],
 
       infra: [
@@ -285,6 +345,10 @@ export const projects = [
         "https://github.com/songseongjun/sayren_front"
     }
   },
+
+
+       
+
 
   // =========================================================
   // 송성준 Individual Java Console Project
