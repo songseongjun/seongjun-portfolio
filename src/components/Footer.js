@@ -33,7 +33,7 @@ export default function Footer() {
                 {/* Icons - RIGHT */}
                 <div className="flex items-center gap-2">
                   <a
-                      href="https://github.com/songsseongjun"
+                      href="https://github.com/songseongjun"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="w-9 h-9 rounded-lg bg-white dark:bg-[#1c1c2e] border border-neutral-200 dark:border-[#2a2a44] flex items-center justify-center text-neutral-600 dark:text-[#b4b4c8] hover:text-[#667eea] dark:hover:text-[#a8b5ff] hover:border-[#667eea]/30 dark:hover:border-[#a8b5ff]/30 transition-colors"
@@ -75,7 +75,7 @@ export default function Footer() {
                 {/* Right: Social Icons */}
                 <div className="flex items-center gap-3">
                   <a
-                      href="https://github.com/songsseongjun"
+                      href="https://github.com/songseongjun"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="w-10 h-10 rounded-xl bg-white dark:bg-[#1c1c2e] border border-neutral-200 dark:border-[#2a2a44] flex items-center justify-center text-neutral-600 dark:text-[#b4b4c8] hover:text-[#667eea] dark:hover:text-[#a8b5ff] hover:border-[#667eea]/30 dark:hover:border-[#a8b5ff]/30 transition-colors"
@@ -107,6 +107,7 @@ export default function Footer() {
       </footer>
   );
 }
+
 
 
 
