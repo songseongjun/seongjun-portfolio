@@ -78,7 +78,7 @@ export default function About() {
 
     "다양한 업무 경험을 통해 책임감과 끈기, 사람과 협업하는 방법을 배웠습니다",
 
-    "Java와 Spring을 중심으로 서버와 데이터의 흐름을 이해하는 백엔드 개발자를 지향합니다"
+    "Java와 Spring을 중심으로 백엔드와 프론트엔드를 연결하며 전체 서비스 흐름을 이해하는 백엔드 중심 풀스택 개발자를 지향합니다"
 
   ];
 
@@ -247,9 +247,9 @@ export default function About() {
     {
       icon: MdWorkOutline,
 
-      period: "2025.04 - 2025.10",
+      period: "2025.04.02 ~ 2025.10.31",
 
-      title: "클라우드 & 데브옵스 기반 풀스택 개발 과정",
+      title: "AWS 풀스택 웹앱(자바, 스프링, 리액트) 지역산업기반 개발자 양성",
 
       description:
         "Java, Spring Boot, React, Database 기반 웹 애플리케이션 개발 및 팀 프로젝트 수행"

@@ -5,7 +5,7 @@ import { ModalProvider } from "@/components/ModalContext";
 
 export const metadata = {
   title: "Seongjun's Portfolio",
-  description: "백엔드 개발자 송성준 포트폴리오",
+  description: "백엔드 중심 풀스택 개발자 송성준 포트폴리오",
 };
 
 export default function RootLayout({ children }) {
@@ -50,3 +50,4 @@ export default function RootLayout({ children }) {
     </html>
   );
 }
+

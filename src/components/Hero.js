@@ -36,7 +36,7 @@ export default function Hero() {
   }, []);
 
   // 개발 분야
-  const categories = ["Backend", "Database", "DevOps"];
+  const categories = ["Backend", "Frontend", "Database", "DevOps"];
 
   // 연락처
   const contacts = [
@@ -75,7 +75,7 @@ export default function Hero() {
         <div className="hidden md:block">
           <div className="absolute top-[15%] left-[5%] opacity-40">
             <code className="text-sm text-[#667eea] dark:text-[#a8b5ff] font-mono font-semibold">
-              &lt;BackendDeveloper /&gt;
+              &lt;FullStackDeveloper /&gt;
             </code>
           </div>
 
@@ -108,7 +108,7 @@ export default function Hero() {
             <br />
 
             <span className="gradient-text">
-              백엔드 개발자 송성준
+              백엔드 중심 풀스택 개발자 송성준
             </span>
           </h1>
 
@@ -141,7 +141,7 @@ export default function Hero() {
                 <br />
 
                 꾸준히 배우고 직접 확인하는 과정을 통해
-                더 안정적인 백엔드 서비스를 만드는 개발자로 성장하고 있습니다.
+                백엔드와 프론트엔드를 연결해 안정적인 웹 서비스를 만드는 풀스택 개발자로 성장하고 있습니다.
               </p>
             </div>
           </div>
@@ -267,3 +267,4 @@ export default function Hero() {
     </section>
   );
 }
+
