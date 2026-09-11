@@ -20,8 +20,7 @@ import {
 
 import {
   MdSchool,
-  MdWorkOutline,
-  MdWorkspacePremium
+  MdWorkOutline
 } from "react-icons/md";
 
 
@@ -86,8 +85,7 @@ export default function About() {
   /* =========================================================
      기술 스택
 
-     중요:
-     실제 프로젝트에서 사용했거나 배운 기술 위주로만 작성
+     실제 프로젝트에서 사용했거나 배운 기술 위주로 작성
      ========================================================= */
   const skills = [
 
@@ -328,18 +326,6 @@ export default function About() {
   ];
 
 
-  /* =========================================================
-     자격증
-
-     SQLD는 합격 발표 후 추가
-     ========================================================= */
-  const certifications = [
-
-    "자동차운전면허 2종 보통"
-
-  ];
-
-
   return (
 
     <section
@@ -538,7 +524,7 @@ export default function About() {
 
 
             {/* Education */}
-            <div className="mb-6">
+            <div>
 
               <h3 className="text-base font-bold mb-3 text-neutral-900 dark:text-[#e8e8f0]">
 
@@ -595,41 +581,6 @@ export default function About() {
 
                   )
                 )}
-
-              </div>
-
-            </div>
-
-
-            {/* Certifications */}
-            <div>
-
-              <h3 className="text-base font-bold mb-3 text-neutral-900 dark:text-[#e8e8f0]">
-
-                Certifications
-
-              </h3>
-
-
-              <div className="space-y-2">
-
-                {certifications.map((certification) => (
-
-                  <div
-                    key={certification}
-                    className="flex items-center gap-2 p-3 rounded-lg bg-white dark:bg-[#1c1c2e] border border-neutral-200 dark:border-[#2a2a44] text-xs text-neutral-900 dark:text-[#e8e8f0]"
-                  >
-
-                    <MdWorkspacePremium
-                      className="text-[#667eea] dark:text-[#a8b5ff] flex-shrink-0"
-                      size={16}
-                    />
-
-                    {certification}
-
-                  </div>
-
-                ))}
 
               </div>
 
@@ -850,105 +801,64 @@ export default function About() {
             </div>
 
 
-            {/* Education + Certifications */}
-            <div className="grid grid-cols-2 gap-6">
+            {/* Education */}
+            <div>
+
+              <h3 className="text-xl font-bold mb-5 text-neutral-900 dark:text-[#e8e8f0]">
+
+                Education
+
+              </h3>
 
 
-              {/* Education */}
-              <div>
+              <div className="grid grid-cols-3 gap-4">
 
-                <h3 className="text-xl font-bold mb-5 text-neutral-900 dark:text-[#e8e8f0]">
-
-                  Education
-
-                </h3>
-
-
-                <div className="space-y-3">
-
-                  {education.map(
-                    ({ icon: Icon, period, title, description }, index) => (
-
-                      <div
-                        key={index}
-                        className="flex gap-3 p-4 rounded-xl bg-white dark:bg-[#1c1c2e] border border-neutral-200 dark:border-[#2a2a44]"
-                      >
-
-                        <Icon
-                          className="text-[#667eea] dark:text-[#a8b5ff] flex-shrink-0 mt-0.5"
-                          size={18}
-                        />
-
-
-                        <div className="min-w-0">
-
-                          <span className="text-xs text-neutral-500 dark:text-[#b4b4c8]">
-
-                            {period}
-
-                          </span>
-
-
-                          <h4 className="font-semibold text-sm text-neutral-900 dark:text-[#e8e8f0]">
-
-                            {title}
-
-                          </h4>
-
-
-                          {description && (
-
-                            <p className="text-xs text-neutral-600 dark:text-[#b4b4c8] mt-0.5">
-
-                              {description}
-
-                            </p>
-
-                          )}
-
-                        </div>
-
-                      </div>
-
-                    )
-                  )}
-
-                </div>
-
-              </div>
-
-
-              {/* Certifications */}
-              <div>
-
-                <h3 className="text-xl font-bold mb-5 text-neutral-900 dark:text-[#e8e8f0]">
-
-                  Certifications
-
-                </h3>
-
-
-                <div className="space-y-3">
-
-                  {certifications.map((certification) => (
+                {education.map(
+                  ({ icon: Icon, period, title, description }, index) => (
 
                     <div
-                      key={certification}
-                      className="flex items-center gap-3 p-4 rounded-xl bg-white dark:bg-[#1c1c2e] border border-neutral-200 dark:border-[#2a2a44] text-sm text-neutral-900 dark:text-[#e8e8f0]"
+                      key={index}
+                      className="flex gap-3 p-5 rounded-xl bg-white dark:bg-[#1c1c2e] border border-neutral-200 dark:border-[#2a2a44]"
                     >
 
-                      <MdWorkspacePremium
-                        className="text-[#667eea] dark:text-[#a8b5ff] flex-shrink-0"
+                      <Icon
+                        className="text-[#667eea] dark:text-[#a8b5ff] flex-shrink-0 mt-0.5"
                         size={18}
                       />
 
-                      {certification}
+
+                      <div className="min-w-0">
+
+                        <span className="text-xs text-neutral-500 dark:text-[#b4b4c8]">
+
+                          {period}
+
+                        </span>
+
+
+                        <h4 className="font-semibold text-sm text-neutral-900 dark:text-[#e8e8f0] mt-0.5">
+
+                          {title}
+
+                        </h4>
+
+
+                        {description && (
+
+                          <p className="text-xs text-neutral-600 dark:text-[#b4b4c8] mt-1 leading-relaxed">
+
+                            {description}
+
+                          </p>
+
+                        )}
+
+                      </div>
 
                     </div>
 
-                  ))}
-
-                </div>
+                  )
+                )}
 
               </div>
 
